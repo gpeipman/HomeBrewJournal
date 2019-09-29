@@ -1,0 +1,37 @@
+﻿@page "/"
+@inherits IndexPage
+
+<h1>My brewing journal</h1>
+
+ <div class="row">
+    <div class="col-md-9">
+        <a class="btn btn-primary" href="/EditBeer">Add beer</a>
+    </div>
+</div>
+
+@if (Beers != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var beer in Beers)
+            {
+                <tr>
+                    <td>@beer.Id</td>
+                    <td>@beer.Name</td>
+                    <td>
+                        <a href="/Batches/@beer.Id" class="btn-sm btn-success">Batches</a>
+                        <a href="/EditBeer/@beer.Id" class="btn-sm btn-warning">Edit</a>
+                        <a class="btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

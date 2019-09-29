@@ -1,0 +1,30 @@
+﻿@page "/EditBeer"
+@page "/EditBeer/{Id}"
+@inherits EditBeerPage
+
+<h3>@PageTitle</h3>
+
+<EditForm Model="CurrentBeer" OnValidSubmit="@SaveBeer">
+    
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label class="col-md-2 control-label">Name:</label>
+        <div class="col-md-7">
+            <InputText @bind-Value="CurrentBeer.Name" class="form-control" />
+            <ValidationMessage For="@(() => CurrentBeer.Name)" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Description:</label>
+        <div class="col-md-7">
+            <InputTextArea @bind-Value="CurrentBeer.Description" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label"></label>
+        <div class="col-md-7">
+            <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+    </div>
+</EditForm>
